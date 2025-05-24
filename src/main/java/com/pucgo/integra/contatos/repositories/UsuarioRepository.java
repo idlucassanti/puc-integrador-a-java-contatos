@@ -2,6 +2,8 @@ package com.pucgo.integra.contatos.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UsuarioRepository extends CrudRepository {
+import com.pucgo.integra.contatos.models.Usuario;
+
+public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
 
 }
