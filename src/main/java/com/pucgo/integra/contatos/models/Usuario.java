@@ -1,5 +1,7 @@
 package com.pucgo.integra.contatos.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +25,9 @@ public class Usuario {
 	
 	@Column(name = "password", nullable = false)
 	private String senha;
+
+	// @Column(name = "created_at", nullable = true)
+	// private LocalDate dataCriacao;
 
 	public Integer getUsuarioId() {
 		return usuarioId;
@@ -55,4 +60,12 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	// public LocalDate getDataCriacao() {
+	// 	return dataCriacao;
+	// }
+
+	// public void setDataCriacao(LocalDate dataCriacao) {
+	// 	this.dataCriacao = dataCriacao;
+	// }
 }
