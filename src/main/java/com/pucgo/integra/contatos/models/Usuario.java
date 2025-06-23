@@ -1,7 +1,5 @@
 package com.pucgo.integra.contatos.models;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,58 +12,47 @@ import jakarta.persistence.Table;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private Integer usuarioId;
+	@Column(name = "id")
+	private Integer id;
 	
 	@Column(name = "name", length = 255, nullable = false)
-	private String nome;
-	
-	@Column(name = "email", length = 255, nullable = false, unique = true)
+	private String name;
+
+	@Column(name = "email", length = 255, nullable = false)
 	private String email;
-	
-	@Column(name = "password", nullable = false)
-	private String senha;
 
-	// @Column(name = "created_at", nullable = true)
-	// private LocalDate dataCriacao;
+	@Column(name = "phone", length = 255, nullable = false)
+	private String phone;
 
-	public Integer getUsuarioId() {
-		return usuarioId;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsuarioId(Integer usuarioId) {
-		this.usuarioId = usuarioId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNome() {
-		return nome;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getEmail() {
-		return email;
+	return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	// public LocalDate getDataCriacao() {
-	// 	return dataCriacao;
-	// }
-
-	// public void setDataCriacao(LocalDate dataCriacao) {
-	// 	this.dataCriacao = dataCriacao;
-	// }
 }

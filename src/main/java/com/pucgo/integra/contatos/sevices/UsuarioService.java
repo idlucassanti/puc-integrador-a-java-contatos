@@ -13,19 +13,32 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario add(Usuario usuario)
-    {
-        //usuario.setSenha(null);
-        return usuarioRepository.save(usuario);
+    public Usuario add(Usuario usuario) {
+        try {
+            return usuarioRepository.save(usuario);
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao salvar usuário", e);
+        }
     }
 
-    public List<Usuario> getAll()
-    {
-        return (List<Usuario>) usuarioRepository.findAll();
+    public List<Usuario> getAll(String name) {
+        if (name == null || name.isEmpty()) {
+            return (List<Usuario>) usuarioRepository.findAll();
+        }
+
+        return usuarioRepository.findByNameContainingIgnoreCase(name);
     }
 
-    public Usuario getByName(String nome)
-    {
-        return usuarioRepository.findByNome(nome);
+    public boolean remove(Integer id) {
+        try {
+            Usuario usuario = usuarioRepository.findById(id).orElse(null);
+            if (usuario != null) {
+                usuarioRepository.delete(usuario);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao remover usuário", e);
+        }
     }
 }
